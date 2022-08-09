@@ -1,12 +1,14 @@
 /* Global Variables */
+
+key = ',us&appid=fcdb1f2bba10164b35624f2a48e437bc&units=imperial'
 baseUrl = 'https://api.openweathermap.org/data/2.5/weather?zip='
-key = ',us&appid=fcdb1f2bba10164b35624f2a48e437bc'
 
 // https://api.openweathermap.org/data/2.5/weather?zip=94040,us&appid={API key}
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = (Number(d.getMonth()) + 1) +'.'+ d.getDate()+'.'+ d.getFullYear();
+alert(newDate)
 
 /* async function in app.js that uses fetch() to make a GET request to the OpenWeatherMap API.
 Create an event listener for the element with the id: generate, with a callback function to execute when it is clicked.
