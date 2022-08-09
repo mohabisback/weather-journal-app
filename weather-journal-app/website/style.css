@@ -1,111 +1,137 @@
-body{
-    background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+* {
+  box-sizing: border-box;
 }
 
-#app{
-    display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
-    justify-content: center;
-    grid-gap: 1em;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+body {
+  background: #fffff8;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.holder{
+#app {
+
+  width: 80%;
+  margin: 40px auto;
+  background: #123c69;
+  color: #f0d43a;
+  justify-content: center;
+  font-size: 5vmin;
+  font-family: 'Oswald', sans-serif;
 
 }
-
-.entry{
-    background: rgba(59, 74, 107, .4);
+.holder {
+  margin: 5px auto;
+  display: block;
+  width: 95%;
+}
+.holder label{
+  font-size: 6.5vmin;
+}
+.entry {
+  display: block;
+  width: 95%;
+  margin: 5px auto;
+  background: rgba(59, 74, 107, .4);
 }
 
-#entryHolder{
-
+.title {
+  display: inline-block;
+  width: 49%;
+  font-size: 5vmin;
+  margin: 2px auto;
 }
-
-#date{
-
+.recent{
+  font-size: 3.5vmin;
+  width: 49%;
+  display: inline-block;
+  margin: 2px auto;
 }
-
-#temp{
-
-}
-
-#content{
-
+#entryHolder {
+  
+  display: block;
+  width: 100%;
+  height: 25vmin;
+  min-height: 25vmin;
+  margin: 2px;
 }
 
 .headline {
-
+  margin: auto;
+  font-size: 8vmin;
 }
-.title{
 
-}
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-    display:block;
-    font-size: 27px;
+label {
+  display: block;
+  width: 100%;
+  font-size: 27px;
 }
 
-input{
-    display:block;
-    height: 60px;
-    width: 320px;
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
+input {
+  display: block;
+  width: 100%;
+  background: #22b2da;
+  color: #f0d43a;
+  font-size: 3vmin;
+  font-family: 'Oswald', sans-serif;
+  border: none;
 }
 
-button{
-    width: 400px;
-    height: 100px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    box-shadow: 2px 4px 5px #444;
-}
-h1{
-    font-size: 36px;
+button {
+  display: block;
+  width: 100%;
+  height: 10vmin;
+  margin: 10px auto;
+  background: #3b4a6b;
+  color: #f0d43a;
+  font-size: 6.5vmin;
+  font-family: 'Oswald', sans-serif;
+  border: none;
+  box-shadow: 2px 4px 5px #444;
 }
 
-textarea{
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+
+
+textarea {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  background: #22b2da;
+  max-height: 30vmin;
+  color: #020210;
+  font-size: 20px;
+  font-family: 'Oswald', sans-serif;
 }
+
 /* Reset style for HTML element on active to have no border*/
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+  outline: none;
 }
+
 /* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
+::placeholder {
+  /* Firefox, Chrome, Opera */
+  color: #020210;
+  font-family: 'Oswald', sans-serif;
+  font-size: 3vmin;
 
-} 
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
+}
 
-} 
-  
-::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #020210;
+  font-family: 'Oswald', sans-serif;
+  font-size: 3vmin;
 
-} 
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #020210;
+  font-family: 'Oswald', sans-serif;
+  font-size: 3vmin;
+
+}

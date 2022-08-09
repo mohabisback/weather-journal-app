@@ -39,14 +39,41 @@ app.post('/data', (req, res)=>{
         'user response': user_response
       }
     }
-    console.log(projectData[id])
     res.status(201).json(projectData[id])
   } else {
     res.status(404).send('error')
   }
 })
 
+app.get('/data', (req, res)=>{
+  let largestKey = 0; //for largest (i.e most recent) key added
+  for (key of Object.keys(projectData)){
+    largestKey = (largestKey > Number(key)) ? largestKey : Number(key)
+  }
+  if (largestKey) { //if there were any data in the projectData obj 
+    res.status(200).json(projectData[String(largestKey)])
+  } else {
+    res.status(404).send('No data saved yet')
+  }
+})
 
+app.get('/oldData', (req, res) =>{
+  let largestKey = 0;
+  let sndLargestKey = 0;
+  for (key of Object.keys(projectData)){
+    if (largestKey < Number(key)){
+      sndLargestKey = largestKey;
+      largestKey = Number(key);
+    } else if (sndLargestKey < Number(key)){
+      sndLargestKey = Number(key);
+    }
+  }
+  if (sndLargestKey) { //if there were any data in the projectData obj 
+    res.status(200).json(projectData[String(sndLargestKey)])
+  } else {
+    res.status(404).send('No data saved yet')
+  }
+})
 
 
 app.all("*", (req, res)=>{
@@ -54,10 +81,4 @@ app.all("*", (req, res)=>{
 })
 
 
-
-function delay(ms){
-  return new Promise(function(resolve, reject){
-    setTimeout(resolve, ms)
-  })
-}
 

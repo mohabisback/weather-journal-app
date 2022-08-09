@@ -8,7 +8,6 @@ baseUrl = 'https://api.openweathermap.org/data/2.5/weather?zip='
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = (Number(d.getMonth()) + 1) +'.'+ d.getDate()+'.'+ d.getFullYear();
-alert(newDate)
 
 /* async function in app.js that uses fetch() to make a GET request to the OpenWeatherMap API.
 Create an event listener for the element with the id: generate, with a callback function to execute when it is clicked.
@@ -34,12 +33,19 @@ const postData = async (url = '', data = {})=>{
     body: JSON.stringify(data), // body data type must match "Content-Type" header        
   });
   try {
-    const newData = await response.json();
-    return newData
   }catch(error) {
     console.log("error", error);
     // appropriately handle the error
   }
+}
+
+// async () => { res = await fetch (url, {req object}); try{data = await res.json();} catch(error){}}
+const getData = async (url ='') => {
+  const response = await fetch(url, {
+    method: 'GET'
+  })
+  const newData = await response.json();
+  return newData
 }
 
 //Update UI
@@ -50,6 +56,14 @@ const updateUI = (data)=>{
     document.getElementById('content').innerText = data['user response'];
   }
 }
+//Update Old UI
+const updateOldUI = (data)=>{
+  if(data){
+    document.getElementById('date2').innerText = data.date;
+    document.getElementById('temp2').innerText = data.temperature;
+    document.getElementById('content2').innerText = data['user response'];
+  }
+}
 
 //event listener for clicking generate
 const myEvent = document.getElementById('generate').addEventListener('click',(e)=>{
@@ -57,7 +71,7 @@ const myEvent = document.getElementById('generate').addEventListener('click',(e)
   if (zip) {
     getWeather(baseUrl, zip, key)
     .then((data)=>{
-      return postData('/data', 
+      postData('/data', 
         {
           temperature: data.main.temp,
           date: newDate,
@@ -65,8 +79,17 @@ const myEvent = document.getElementById('generate').addEventListener('click',(e)
         }
       )
     })
+    .then(()=>{
+      return getData('/data')
+    })
     .then((newData)=>{
       updateUI(newData)
+    })
+    .then(()=>{
+      return getData('/oldData')
+    })
+    .then((oldData)=>{
+      updateOldUI(oldData)
     })
   } else {
     return alert('Please, enter a valid zip code...')
